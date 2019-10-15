@@ -79,7 +79,7 @@ impl Stretch {
         Ok(node)
     }
 
-    pub fn new_node(&mut self, style: Style, children: Vec<Node>) -> Result<Node, Error> {
+    pub fn new_node(&mut self, style: Style, children: Vec<Node>, is_text: bool) -> Result<Node, Error> {
         let node = self.allocate_node();
         let children = children.iter().map(|child| self.find_node(*child)).collect::<Result<Vec<_>, Error>>()?;
         let id = self.forest.new_node(style, children);
