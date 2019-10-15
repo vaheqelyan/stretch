@@ -215,7 +215,7 @@ impl Stretch {
     
     pub fn is_text_node(&self, node: Node) -> Result<bool, Error> {
         let id = self.find_node(node)?;
-        Ok(self.forest.node[id].is_text);
+        Ok(self.forest.node[id].is_text)
     }
 
     pub fn compute_layout(&mut self, node: Node, size: Size<Number>) -> Result<(), Error> {
