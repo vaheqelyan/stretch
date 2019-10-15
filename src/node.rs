@@ -83,7 +83,6 @@ impl Stretch {
         let node = self.allocate_node();
         let children = children.iter().map(|child| self.find_node(*child)).collect::<Result<Vec<_>, Error>>()?;
         let id = self.forest.new_node(style, children);
-        self.is_text = is_text;
         self.add_node(node, id);
         Ok(node)
     }
