@@ -24,8 +24,8 @@ impl NodeData {
         NodeData { style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: false }
     }
 
-    fn new(style: Style) -> Self {
-        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: false }
+    fn new(style: Style, is_text) -> Self {
+        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, is_text }
     }
 }
 
@@ -52,12 +52,12 @@ impl Forest {
         id
     }
 
-    pub fn new_node(&mut self, style: Style, children: Vec<NodeId>) -> NodeId {
+    pub fn new_node(&mut self, style: Style, children: Vec<NodeId>, is_text: bool) -> NodeId {
         let id = self.nodes.len();
         for child in &children {
             self.parents[*child].push(id);
         }
-        self.nodes.push(NodeData::new(style));
+        self.nodes.push(NodeData::new(style, is_text));
         self.children.push(children);
         self.parents.push(Vec::with_capacity(1));
         id
