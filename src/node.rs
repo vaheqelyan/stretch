@@ -56,6 +56,7 @@ impl Stretch {
 
     fn allocate_node(&mut self) -> Node {
         let local = self.nodes.allocate();
+        println!("{:?}", self);
         Node { instance: self.id, local, is_text: true }
     }
 
