@@ -24,7 +24,7 @@ impl NodeData {
         NodeData { style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: false }
     }
 
-    fn new(style: Style, is_text) -> Self {
+    fn new(style: Style, is_text: bool) -> Self {
         NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, is_text }
     }
 }
