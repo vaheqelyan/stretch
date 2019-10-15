@@ -16,15 +16,16 @@ pub(crate) struct NodeData {
     pub(crate) layout: Layout,
     pub(crate) layout_cache: Option<Cache>,
     pub(crate) is_dirty: bool,
+    pub(crate) is_text: bool,
 }
 
 impl NodeData {
     fn new_leaf(style: Style, measure: MeasureFunc) -> Self {
-        NodeData { style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true }
+        NodeData { style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: false }
     }
 
     fn new(style: Style) -> Self {
-        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true }
+        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: false }
     }
 }
 
