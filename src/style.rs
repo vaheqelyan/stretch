@@ -254,6 +254,7 @@ pub struct Style {
     pub min_size: Size<Dimension>,
     pub max_size: Size<Dimension>,
     pub aspect_ratio: Number,
+    pub background_color: [f32; 3],
 }
 
 impl Default for Style {
@@ -280,6 +281,7 @@ impl Default for Style {
             min_size: Default::default(),
             max_size: Default::default(),
             aspect_ratio: Default::default(),
+            background_color: [0.0, 1.0, 0.0],
         }
     }
 }
