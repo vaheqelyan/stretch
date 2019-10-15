@@ -25,8 +25,7 @@ lazy_static! {
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub struct Node {
     instance: id::Id,
-    local: id::Id,
-    is_text: bool,
+    local: id::Id
 }
 
 pub struct Stretch {
@@ -56,7 +55,7 @@ impl Stretch {
 
     fn allocate_node(&mut self) -> Node {
         let local = self.nodes.allocate();
-        Node { instance: self.id, local, is_text: true }
+        Node { instance: self.id, local }
     }
 
     fn add_node(&mut self, node: Node, id: NodeId) {
