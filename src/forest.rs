@@ -52,12 +52,12 @@ impl Forest {
         id
     }
 
-    pub fn new_node(&mut self, style: Style, children: Vec<NodeId>, is_text: bool) -> NodeId {
+    pub fn new_node(&mut self, style: Style, children: Vec<NodeId>) -> NodeId {
         let id = self.nodes.len();
         for child in &children {
             self.parents[*child].push(id);
         }
-        self.nodes.push(NodeData::new(style, is_text));
+        self.nodes.push(NodeData::new(style, false));
         self.children.push(children);
         self.parents.push(Vec::with_capacity(1));
         id
