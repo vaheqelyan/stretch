@@ -17,11 +17,16 @@ pub(crate) struct NodeData {
     pub(crate) layout_cache: Option<Cache>,
     pub(crate) is_dirty: bool,
     pub(crate) is_text: bool,
+    pub(crate) text_value: String,
 }
 
 impl NodeData {
     fn new_leaf(style: Style, measure: MeasureFunc) -> Self {
-        NodeData { style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: false }
+        NodeData { style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: false, text_value: "".to_string() }
+    }
+    
+    fn new_text(text_value: &str) -> Self {
+        NodeData { style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: true, text_value: text_value.to_string() }
     }
 
     fn new(style: Style, is_text: bool) -> Self {
@@ -47,6 +52,14 @@ impl Forest {
     pub fn new_leaf(&mut self, style: Style, measure: MeasureFunc) -> NodeId {
         let id = self.nodes.len();
         self.nodes.push(NodeData::new_leaf(style, measure));
+        self.children.push(Vec::with_capacity(0));
+        self.parents.push(Vec::with_capacity(1));
+        id
+    }
+    
+    pub fn new_text(&mut self, text: String) -> NodeId {
+        let id = self.nodes.len();
+        self.nodes.push(NodeData::new_text(text));
         self.children.push(Vec::with_capacity(0));
         self.parents.push(Vec::with_capacity(1));
         id
