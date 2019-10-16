@@ -26,7 +26,7 @@ impl NodeData {
     }
     
     fn new_text(text_value: &str) -> Self {
-        NodeData { style: Style { size: Size { width: Dimension::Auto }, ..Default::default() }, measure: Some(Box::new(|_| { Ok(Size { width: 0.0, height: 0.0 }) })), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: true, text_value: text_value.to_string() }
+        NodeData { style: Style { size: Size { width: Dimension::Auto, height: Dimension::Undefined }, ..Default::default() }, measure: Some(Box::new(|_| { Ok(Size { width: 0.0, height: 0.0 }) })), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: true, text_value: text_value.to_string() }
     }
 
     fn new(style: Style, is_text: bool) -> Self {
