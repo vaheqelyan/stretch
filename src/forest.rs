@@ -8,7 +8,6 @@ use crate::node::MeasureFunc;
 use crate::number::Number;
 use crate::result::{Cache, Layout};
 use crate::style::{Style, Dimension};
-use crate::geometry::Size;
 use crate::Error;
 
 pub(crate) struct NodeData {
