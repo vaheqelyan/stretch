@@ -226,7 +226,7 @@ impl Stretch {
     }
     
     pub fn get_text_value(&self, node: Node) -> Result<String, Error> {
-        let id = self.find_node()?;
+        let id = self.find_node(node)?;
         Ok(self.forest.nodes[id].text_value)
     }
 
