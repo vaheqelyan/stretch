@@ -77,6 +77,13 @@ impl Stretch {
         self.add_node(node, id);
         Ok(node)
     }
+    
+    pub fn new_text(&mut self, text: String) -> Result<Node, Error> {
+        let node = self.allocate_node();
+        let id = self.forest.new_text(text);
+        self.add_node(node, id);
+        Ok(node)
+    }
 
     pub fn new_node(&mut self, style: Style, children: Vec<Node>) -> Result<Node, Error> {
         let node = self.allocate_node();
