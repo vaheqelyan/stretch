@@ -30,7 +30,7 @@ impl NodeData {
     }
 
     fn new(style: Style, is_text: bool) -> Self {
-        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, is_text }
+        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, is_text, text_value: "".to_string() }
     }
 }
 
