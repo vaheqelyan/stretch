@@ -62,7 +62,7 @@ impl Forest {
         for child in &children {
             self.parents[*child].push(id);
         }
-        self.nodes.push(NodeData::new(style, false));
+        self.nodes.push(NodeData::new(style));
         self.children.push(children);
         self.parents.push(Vec::with_capacity(1));
         id
