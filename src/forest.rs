@@ -25,7 +25,7 @@ impl NodeData {
     }
     
     fn new_scroll_view() -> Self {
-        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, is_text, text_value: "".to_string(), scroll_view: true }
+        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
     }
 
     fn new(style: Style) -> Self {
