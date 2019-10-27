@@ -78,9 +78,10 @@ impl Stretch {
         Ok(node)
     }
     
-    pub fn new_scroll_view(&mut self) -> Result<Node, Error> {
+    pub fn new_scroll_view(&mut self, style: Style, children: Vec<Node>) -> Result<Node, Error> {
         let node = self.allocate_node();
-        let id = self.forest.new_scroll_view();
+        let children = children.iter().map(|child| self.find_node(*child)).collect::<Result<Vec<_>, Error>>()?;
+        let id = self.forest.new_scroll_view(style, children);
         self.add_node(node, id);
         Ok(node)
     }
