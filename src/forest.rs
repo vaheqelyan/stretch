@@ -67,6 +67,19 @@ impl Forest {
         self.parents.push(Vec::with_capacity(1));
         id
     }
+    
+    
+    pub fn new_scroll_view(&mut self, style: Style, children: Vec<NodeId>) -> NodeId {
+        let id = self.nodes.len();
+        for child in &children {
+            self.parents[*child].push(id);
+        }
+        self.nodes.push(NodeData::new_scroll_view(style));
+        self.children.push(children);
+        self.parents.push(Vec::with_capacity(1));
+        id
+    }
+
 
     pub fn add_child(&mut self, node: NodeId, child: NodeId) {
         self.parents[child].push(node);
