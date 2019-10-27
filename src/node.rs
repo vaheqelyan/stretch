@@ -78,6 +78,13 @@ impl Stretch {
         Ok(node)
     }
     
+    pub fn new_scroll_view(&mut self) -> Result<Node, Error> {
+        let node = self.allocate_node();
+        let id = self.forest.new_scroll_view();
+        self.add_node(node, id);
+        Ok(node)
+    }
+    
     /*pub fn new_text(&mut self, text: &str) -> Result<Node, Error> {
         let node = self.allocate_node();
         let id = self.forest.new_text(text);
@@ -218,6 +225,11 @@ impl Stretch {
     pub fn dirty(&self, node: Node) -> Result<bool, Error> {
         let id = self.find_node(node)?;
         Ok(self.forest.nodes[id].is_dirty)
+    }
+    
+    pub fn is_scroll_view(&self, node: Node) -> Result<bool, Error> {
+        let id = self.find_node(node)?;
+        Ok(self.forest.nodes[id].scroll_view)
     }
     
     /*pub fn is_text_node(&self, node: Node) -> Result<bool, Error> {
