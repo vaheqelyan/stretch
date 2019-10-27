@@ -18,19 +18,24 @@ pub(crate) struct NodeData {
     pub(crate) is_dirty: bool,
     pub(crate) is_text: bool,
     pub(crate) text_value: String,
+    pub(crate) scroll_view: bool,
 }
 
 impl NodeData {
     fn new_leaf(style: Style, measure: MeasureFunc) -> Self {
-        NodeData { style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: false, text_value: "".to_string() }
+        NodeData { scroll_view:false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: false, text_value: "".to_string() }
     }
     
     fn new_text(text_value: &str) -> Self {
-        NodeData { style: Style { size: Size { width: Dimension::Auto, height: Dimension::Undefined }, ..Default::default() }, measure: Some(Box::new(|_| { Ok(Size { width: 0.0, height: 0.0 }) })), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: true, text_value: text_value.to_string() }
+        NodeData { scroll_view: false, style: Style { size: Size { width: Dimension::Auto, height: Dimension::Undefined }, ..Default::default() }, measure: Some(Box::new(|_| { Ok(Size { width: 0.0, height: 0.0 }) })), layout_cache: None, layout: Layout::new(), is_dirty: true, is_text: true, text_value: text_value.to_string() }
+    }
+    
+    fn new_scroll_view() -> Self {
+        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, is_text, text_value: "".to_string(), scroll_view: true }
     }
 
     fn new(style: Style, is_text: bool) -> Self {
-        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, is_text, text_value: "".to_string() }
+        NodeData { scroll_view:false,style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, is_text, text_value: "".to_string() }
     }
 }
 
