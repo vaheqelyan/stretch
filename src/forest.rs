@@ -55,14 +55,7 @@ impl Forest {
         self.parents.push(Vec::with_capacity(1));
         id
     }
-    
-    pub fn new_text(&mut self, text: &str) -> NodeId {
-        let id = self.nodes.len();
-        self.nodes.push(NodeData::new_text(text));
-        self.children.push(Vec::with_capacity(0));
-        self.parents.push(Vec::with_capacity(1));
-        id
-    }
+   
 
     pub fn new_node(&mut self, style: Style, children: Vec<NodeId>) -> NodeId {
         let id = self.nodes.len();
