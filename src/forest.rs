@@ -24,7 +24,7 @@ impl NodeData {
         NodeData { style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
     
-    fn new_scroll_view() -> Self {
+    fn new_scroll_view(style: Style) -> Self {
         NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
     }
 
