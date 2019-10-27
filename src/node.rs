@@ -220,10 +220,10 @@ impl Stretch {
         Ok(self.forest.nodes[id].is_dirty)
     }
     
-    pub fn is_text_node(&self, node: Node) -> Result<bool, Error> {
+    /*pub fn is_text_node(&self, node: Node) -> Result<bool, Error> {
         let id = self.find_node(node)?;
         Ok(self.forest.nodes[id].is_text)
-    }
+    }*/
     
     /*pub fn get_text_value(&self, node: Node) -> Result<String, Error> {
         let id = self.find_node(node)?;
