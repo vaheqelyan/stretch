@@ -21,7 +21,7 @@ pub(crate) struct NodeData {
 
 impl NodeData {
     fn new_leaf(style: Style, measure: MeasureFunc) -> Self {
-        NodeData { style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
     
     fn new_scroll_view(style: Style) -> Self {
@@ -29,7 +29,7 @@ impl NodeData {
     }
 
     fn new(style: Style) -> Self {
-        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
 }
 
