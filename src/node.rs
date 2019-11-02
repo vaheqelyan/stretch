@@ -222,6 +222,12 @@ impl Stretch {
         self.forest.mark_dirty(id);
         Ok(())
     }
+    
+    fn set_pos(&mut self, node: Node, x: f32, y: f32) -> Result<(), Error> {
+        let id = self.find_node(node)?;
+        self.forest.set_pos(id, x, y);
+        Ok(())
+    }
 
     pub fn dirty(&self, node: Node) -> Result<bool, Error> {
         let id = self.find_node(node)?;
