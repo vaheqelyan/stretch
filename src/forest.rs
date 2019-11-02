@@ -178,7 +178,7 @@ impl Forest {
     
     pub fn set_pos(&mut self, node: NodeId, x: f32, y: f32) {
         fn set_pos(nodes: &mut Vec<NodeData>, node_id: NodeId, x: f32, y: f32) {
-            let node = &mut node[node_id];
+            let node = &mut nodes[node_id];
             node.x = x;
             node.y = y;
         }
