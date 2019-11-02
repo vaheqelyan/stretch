@@ -8,7 +8,7 @@ use crate::node::MeasureFunc;
 use crate::number::Number;
 use crate::result::{Cache, Layout};
 use crate::style::{Style, Dimension};
-use crate::Error;
+use crate::Error;f
 
 pub(crate) struct NodeData {
     pub(crate) style: Style,
@@ -17,19 +17,21 @@ pub(crate) struct NodeData {
     pub(crate) layout_cache: Option<Cache>,
     pub(crate) is_dirty: bool,
     pub(crate) scroll_view: bool,
+    pub(crate) x: f32,
+    pub(crate) y: f32,
 }
 
 impl NodeData {
     fn new_leaf(style: Style, measure: MeasureFunc) -> Self {
-        NodeData { scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { x: 0.0, y:0.0, scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
     
     fn new_scroll_view(style: Style) -> Self {
-        NodeData { style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
+        NodeData { x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
     }
 
     fn new(style: Style) -> Self {
-        NodeData { scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { x:0.0, y:0.0, scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
 }
 
