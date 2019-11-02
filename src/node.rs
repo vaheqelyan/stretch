@@ -234,6 +234,12 @@ impl Stretch {
         Ok(self.forest.nodes[id].is_dirty)
     }
     
+    
+    pub fn get_pos(&self, node: Node) -> Result<(f32, f32), Error> {
+        let id = self.find_node(node)?;
+        Ok( (self.forest.nodes[id].x, self.forest.nodes[id].y) )
+    }
+    
     pub fn is_scroll_view(&self, node: Node) -> Result<bool, Error> {
         let id = self.find_node(node)?;
         Ok(self.forest.nodes[id].scroll_view)
