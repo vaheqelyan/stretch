@@ -175,6 +175,15 @@ impl Forest {
         self.mark_dirty(node);
         child
     }
+    
+    pub fn set_pos(&mut self, node: NodeId, x: f32, y: f32) {
+        fn set_pos(nodes: &mut Vec<NodeData>, node_id: NodeId, x: f32, y: f32) {
+            let node = &mut node[node_id];
+            node.x = x;
+            node.y = y;
+        }
+        set_pos(&mut self.nodes, node, x, y);
+    }
 
     pub fn mark_dirty(&mut self, node: NodeId) {
         fn mark_dirty_impl(nodes: &mut Vec<NodeData>, parents: &Vec<Vec<NodeId>>, node_id: NodeId) {
