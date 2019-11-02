@@ -8,7 +8,7 @@ use crate::node::MeasureFunc;
 use crate::number::Number;
 use crate::result::{Cache, Layout};
 use crate::style::{Style, Dimension};
-use crate::Error;f
+use crate::Error;
 
 pub(crate) struct NodeData {
     pub(crate) style: Style,
