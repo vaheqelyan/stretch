@@ -223,9 +223,9 @@ impl Stretch {
         Ok(())
     }
     
-    pub fn set_pos(&mut self, node: Node, x: f32, y: f32) -> Result<(), Error> {
+    pub fn set_pos(&mut self, node: Node, x: f32, y: f32, bottom: f32, right: f32) -> Result<(), Error> {
         let id = self.find_node(node)?;
-        self.forest.set_pos(id, x, y);
+        self.forest.set_pos(id, x, y, bottom, right);
         Ok(())
     }
 
