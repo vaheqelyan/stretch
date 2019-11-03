@@ -19,19 +19,21 @@ pub(crate) struct NodeData {
     pub(crate) scroll_view: bool,
     pub(crate) x: f32,
     pub(crate) y: f32,
+    pub(crate) bottom: f32,
+    pub(crate) right: f32,
 }
 
 impl NodeData {
     fn new_leaf(style: Style, measure: MeasureFunc) -> Self {
-        NodeData { x: 0.0, y:0.0, scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { bottom:0.0, right:0.0, x: 0.0, y:0.0, scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
     
     fn new_scroll_view(style: Style) -> Self {
-        NodeData { x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
+        NodeData { bottom:0.0, right:0.0, x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
     }
 
     fn new(style: Style) -> Self {
-        NodeData { x:0.0, y:0.0, scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { bottom:0.0, right:0.0, x:0.0, y:0.0, scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
 }
 
@@ -176,13 +178,15 @@ impl Forest {
         child
     }
     
-    pub fn set_pos(&mut self, node: NodeId, x: f32, y: f32) {
-        fn set_pos(nodes: &mut Vec<NodeData>, node_id: NodeId, x: f32, y: f32) {
+    pub fn set_pos(&mut self, node: NodeId, x: f32, y: f32, bottom: f32, right: f32) {
+        fn set_pos(nodes: &mut Vec<NodeData>, node_id: NodeId, x: f32, y: f32, bottom: f32, right: f32) {
             let node = &mut nodes[node_id];
             node.x = x;
             node.y = y;
+            node.bottom = bottom;
+            node.right = right;
         }
-        set_pos(&mut self.nodes, node, x, y);
+        set_pos(&mut self.nodes, node, x, y, bottom, right);
     }
 
     pub fn mark_dirty(&mut self, node: NodeId) {
