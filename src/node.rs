@@ -237,7 +237,7 @@ impl Stretch {
     
     pub fn get_pos(&self, node: Node) -> Result<(f32, f32, f32, f32), Error> {
         let id = self.find_node(node)?;
-        let node = self.forest.nodes[id];
+        let node = &self.forest.nodes[id];
         Ok( (node.x, node.y, node.bottom, node.right ) )
     }
     
