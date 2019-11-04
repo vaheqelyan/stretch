@@ -64,7 +64,7 @@ impl Stretch {
     }
 
     // Find node in the forest.
-    fn find_node(&self, node: Node) -> Result<NodeId, Error> {
+    pub fn find_node(&self, node: Node) -> Result<NodeId, Error> {
         match self.nodes_to_ids.get(&node) {
             Some(id) => Ok(*id),
             None => Err(Error::InvalidNode(node)),
