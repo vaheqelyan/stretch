@@ -180,7 +180,7 @@ impl Forest {
     }
     
     pub fn set_offset(&mut self, node: NodeId, offset: f32) {
-        fn set_offset(nodes: &mut Vec<NodeData>, node_id: NodeId, offset) {
+        fn set_offset(nodes: &mut Vec<NodeData>, node_id: NodeId, offset: f32) {
             let node = &mut nodes[node_id];
             node.offset = offset;
         }
