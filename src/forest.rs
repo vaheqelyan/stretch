@@ -21,19 +21,20 @@ pub(crate) struct NodeData {
     pub(crate) y: f32,
     pub(crate) bottom: f32,
     pub(crate) right: f32,
+    pub(crate) offset: f32,
 }
 
 impl NodeData {
     fn new_leaf(style: Style, measure: MeasureFunc) -> Self {
-        NodeData { bottom:0.0, right:0.0, x: 0.0, y:0.0, scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { offset: 0.0, bottom:0.0, right:0.0, x: 0.0, y:0.0, scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
     
     fn new_scroll_view(style: Style) -> Self {
-        NodeData { bottom:0.0, right:0.0, x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
+        NodeData { offset: 0.0,bottom:0.0, right:0.0, x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
     }
 
     fn new(style: Style) -> Self {
-        NodeData { bottom:0.0, right:0.0, x:0.0, y:0.0, scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { offset: 0.0,bottom:0.0, right:0.0, x:0.0, y:0.0, scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
 }
 
@@ -176,6 +177,14 @@ impl Forest {
         self.parents[child].retain(|p| *p != node);
         self.mark_dirty(node);
         child
+    }
+    
+    pub fn set_offset(&mut self, node: NodeId, offset: f32) {
+        fn set_offset(nodes: &mut Vec<NodeData>, node_id: NodeId, offset) {
+            let node = &mut nodes[node_id];
+            node.offset = offset;
+        }
+        set_offset(&mut self.nodes, node, offset);
     }
     
     pub fn set_pos(&mut self, node: NodeId, x: f32, y: f32, bottom: f32, right: f32) {
