@@ -228,6 +228,13 @@ impl Stretch {
         self.forest.set_pos(id, x, y, bottom, right);
         Ok(())
     }
+    
+    pub fn set_offset(&mut self, node: Node, offset: f32) -> Result<(), Error> {
+        let id = self.find_node(node)?;
+        self.forest.set_offset(id, offset);
+        Ok(())
+    }
+
 
     pub fn dirty(&self, node: Node) -> Result<bool, Error> {
         let id = self.find_node(node)?;
@@ -239,6 +246,12 @@ impl Stretch {
         let id = self.find_node(node)?;
         let node = &self.forest.nodes[id];
         Ok( (node.x, node.y, node.bottom, node.right ) )
+    }
+    
+    pub fn get_offset(&self, node: Node) -> Result<f32, Error> {
+        let id = self.find_node(node)?;
+        let node = &self.forest.nodes[id];
+        Ok( node.offset )
     }
     
     
