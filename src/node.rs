@@ -258,7 +258,7 @@ impl Stretch {
         pub fn get_bid(&self, node: Node) -> Result<String, Error> {
         let id = self.find_node(node)?;
         let node = &self.forest.nodes[id];
-        Ok( node.bid.unwrap() )
+        Ok( node.belong_to.unwrap() )
     }
     
     pub fn get_offset(&self, node: Node) -> Result<f32, Error> {
