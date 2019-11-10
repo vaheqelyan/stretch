@@ -75,12 +75,12 @@ impl Forest {
     }
     
     
-    pub fn new_scroll_view(&mut self, style: Style, children: Vec<NodeId>, id: Option<String>) -> NodeId {
+    pub fn new_scroll_view(&mut self, style: Style, children: Vec<NodeId>, bid: Option<String>) -> NodeId {
         let id = self.nodes.len();
         for child in &children {
             self.parents[*child].push(id);
         }
-        self.nodes.push(NodeData::new_scroll_view(style, id));
+        self.nodes.push(NodeData::new_scroll_view(style, bid));
         self.children.push(children);
         self.parents.push(Vec::with_capacity(1));
         id
