@@ -255,7 +255,7 @@ impl Stretch {
     }
     
     
-        pub fn get_pos(&self, node: Node) -> Result<String, Error> {
+        pub fn get_bid(&self, node: Node) -> Result<String, Error> {
         let id = self.find_node(node)?;
         let node = &self.forest.nodes[id];
         Ok( node.bid.unwrap() )
