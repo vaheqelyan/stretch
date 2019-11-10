@@ -196,7 +196,7 @@ impl Forest {
             let node = &mut nodes[node_id];
             node.belong_to = Some(bid);
         }
-        set_bid(&mut self.nodes, node, id);
+        set_bid(&mut self.nodes, node, bid);
     }
     
     pub fn set_pos(&mut self, node: NodeId, x: f32, y: f32, bottom: f32, right: f32) {
