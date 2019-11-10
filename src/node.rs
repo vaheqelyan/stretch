@@ -254,6 +254,13 @@ impl Stretch {
         Ok( (node.x, node.y, node.bottom, node.right ) )
     }
     
+    
+        pub fn get_pos(&self, node: Node) -> Result<String, Error> {
+        let id = self.find_node(node)?;
+        let node = &self.forest.nodes[id];
+        Ok( node.bid.unwrap() )
+    }
+    
     pub fn get_offset(&self, node: Node) -> Result<f32, Error> {
         let id = self.find_node(node)?;
         let node = &self.forest.nodes[id];
