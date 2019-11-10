@@ -30,7 +30,7 @@ impl NodeData {
         NodeData { belong_to: None, offset: 0.0, bottom:0.0, right:0.0, x: 0.0, y:0.0, scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
     
-    fn new_scroll_view(belong_to: Option<String>, style: Style) -> Self {
+    fn new_scroll_view(style: Style, belong_to: Option<String>) -> Self {
         NodeData { belong_to, offset: 0.0,bottom:0.0, right:0.0, x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
     }
 
