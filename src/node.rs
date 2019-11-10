@@ -229,6 +229,12 @@ impl Stretch {
         Ok(())
     }
     
+    pub fn set_bid(&mut self, node: Node, bid: String) -> Result<(), Error> {
+        let id = self.find_node(node)?;
+        self.forest.set_bid(id, bid);
+        Ok(())
+    }
+    
     pub fn set_offset(&mut self, node: Node, offset: f32) -> Result<(), Error> {
         let id = self.find_node(node)?;
         self.forest.set_offset(id, offset);
