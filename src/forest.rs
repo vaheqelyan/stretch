@@ -191,10 +191,10 @@ impl Forest {
         set_offset(&mut self.nodes, node, offset);
     }
     
-        pub fn set_bid(&mut self, node: NodeId, id: String) {
-        fn set_bid(nodes: &mut Vec<NodeData>, node_id: NodeId, x: f32, y: f32, bottom: f32, right: f32) {
+        pub fn set_bid(&mut self, node: NodeId, bid: String) {
+        fn set_bid(nodes: &mut Vec<NodeData>, node_id: NodeId, bid: String) {
             let node = &mut nodes[node_id];
-            node.belong_to = Some(id);
+            node.belong_to = Some(bid);
         }
         set_bid(&mut self.nodes, node, id);
     }
