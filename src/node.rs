@@ -78,10 +78,10 @@ impl Stretch {
         Ok(node)
     }
     
-    pub fn new_scroll_view(&mut self, style: Style, children: Vec<Node>, bid: Option<String>) -> Result<Node, Error> {
+    pub fn new_scroll_view(&mut self, style: Style, children: Vec<Node>) -> Result<Node, Error> {
         let node = self.allocate_node();
         let children = children.iter().map(|child| self.find_node(*child)).collect::<Result<Vec<_>, Error>>()?;
-        let id = self.forest.new_scroll_view(style, children, bid);
+        let id = self.forest.new_scroll_view(style, children);
         self.add_node(node, id);
         Ok(node)
     }
@@ -229,12 +229,6 @@ impl Stretch {
         Ok(())
     }
     
-    pub fn set_bid(&mut self, node: Node, bid: String) -> Result<(), Error> {
-        let id = self.find_node(node)?;
-        self.forest.set_bid(id, bid);
-        Ok(())
-    }
-    
     pub fn set_offset(&mut self, node: Node, offset: f32) -> Result<(), Error> {
         let id = self.find_node(node)?;
         self.forest.set_offset(id, offset);
@@ -252,13 +246,6 @@ impl Stretch {
         let id = self.find_node(node)?;
         let node = &self.forest.nodes[id];
         Ok( (node.x, node.y, node.bottom, node.right ) )
-    }
-    
-    
-        pub fn get_bid(&self, node: Node) -> Result<String, Error> {
-        let id = self.find_node(node)?;
-        let node = &self.forest.nodes[id];
-        Ok( node.belong_to.as_ref().unwrap().to_string() )
     }
     
     pub fn get_offset(&self, node: Node) -> Result<f32, Error> {
