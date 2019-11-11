@@ -22,20 +22,19 @@ pub(crate) struct NodeData {
     pub(crate) bottom: f32,
     pub(crate) right: f32,
     pub(crate) offset: f32,
-    pub(crate) belong_to: Option<String>,
 }
 
 impl NodeData {
     fn new_leaf(style: Style, measure: MeasureFunc) -> Self {
-        NodeData { belong_to: None, offset: 0.0, bottom:0.0, right:0.0, x: 0.0, y:0.0, scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { offset: 0.0, bottom:0.0, right:0.0, x: 0.0, y:0.0, scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
     
     fn new_scroll_view(style: Style, belong_to: Option<String>) -> Self {
-        NodeData { belong_to, offset: 0.0,bottom:0.0, right:0.0, x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
+        NodeData { offset: 0.0,bottom:0.0, right:0.0, x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
     }
 
     fn new(style: Style) -> Self {
-        NodeData { belong_to: None, offset: 0.0,bottom:0.0, right:0.0, x:0.0, y:0.0, scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { offset: 0.0,bottom:0.0, right:0.0, x:0.0, y:0.0, scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
 }
 
@@ -191,13 +190,6 @@ impl Forest {
         set_offset(&mut self.nodes, node, offset);
     }
     
-        pub fn set_bid(&mut self, node: NodeId, bid: String) {
-        fn set_bid(nodes: &mut Vec<NodeData>, node_id: NodeId, bid: String) {
-            let node = &mut nodes[node_id];
-            node.belong_to = Some(bid);
-        }
-        set_bid(&mut self.nodes, node, bid);
-    }
     
     pub fn set_pos(&mut self, node: NodeId, x: f32, y: f32, bottom: f32, right: f32) {
         fn set_pos(nodes: &mut Vec<NodeData>, node_id: NodeId, x: f32, y: f32, bottom: f32, right: f32) {
