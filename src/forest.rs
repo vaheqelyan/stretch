@@ -187,10 +187,10 @@ impl Forest {
             node.offset += {
                 if offset <= 0.0 {
                     0.0
-                }
+                };
                 if offset > node.cache_farest_element {
                     node.cache_farest_element
-                }
+                };
                 offset
             };
             
