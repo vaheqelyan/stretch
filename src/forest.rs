@@ -4,6 +4,8 @@
 
 extern crate num; // 0.2.0
 
+use num::clamp;
+
 use crate::geometry::Size;
 use crate::id::NodeId;
 use crate::node::MeasureFunc;
