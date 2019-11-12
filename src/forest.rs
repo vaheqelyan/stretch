@@ -184,15 +184,16 @@ impl Forest {
     pub fn set_offset(&mut self, node: NodeId, offset: f32) {
         fn set_offset(nodes: &mut Vec<NodeData>, node_id: NodeId, offset: f32) {
             let node = &mut nodes[node_id];
-            node.offset += {
-                if offset <= 0.0 {
-                    return 0.0
-                };
-                if offset > node.cache_farest_element {
-                    return node.cache_farest_element
-                };
-                return offset
-            };
+            
+            let foo = node.offset + offset;
+            
+            if foo <= 0.0 {
+                node.offset = 0.0;
+            } else if foo >= node.cache_farest_element {
+                node.offset = node.cache_farest_element;
+            } else {
+                node.offset += offset;
+            }
             
         }
         set_offset(&mut self.nodes, node, offset);
