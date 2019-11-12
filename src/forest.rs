@@ -193,6 +193,8 @@ impl Forest {
             
             node.offset = clamp(node.offset, 0.0, node.cache_farest_element);
             
+            println!("{:?}", node.offset);
+            
         }
         set_offset(&mut self.nodes, node, offset);
     }
