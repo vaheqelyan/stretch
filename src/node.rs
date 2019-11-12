@@ -229,6 +229,12 @@ impl Stretch {
         Ok(())
     }
     
+    pub fn set_cache(&mut self, node: Node, el_count: u32, far_el: f32) -> Result<(), Error> {
+        let id = self.find_node(node)?;
+        self.forest.set_cache(id, el_count, far_el);
+        Ok(())
+    }
+    
     pub fn set_offset(&mut self, node: Node, offset: f32) -> Result<(), Error> {
         let id = self.find_node(node)?;
         self.forest.set_offset(id, offset);
@@ -246,6 +252,12 @@ impl Stretch {
         let id = self.find_node(node)?;
         let node = &self.forest.nodes[id];
         Ok( (node.x, node.y, node.bottom, node.right ) )
+    }
+    
+    pub fn get_cache(&self, node: Node) -> Result<(u32, f32), Error> {
+        let id = self.find_node(node)?;
+        let node = &self.forest.nodes[id];
+        Ok( (node.cache_el_count, node.cache_farest_element) )
     }
     
     pub fn get_offset(&self, node: Node) -> Result<f32, Error> {
