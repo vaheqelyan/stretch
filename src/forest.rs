@@ -2,6 +2,8 @@
 //!
 //! Backing datastructure for `Stretch` structs.
 
+extern crate num; // 0.2.0
+
 use crate::geometry::Size;
 use crate::id::NodeId;
 use crate::node::MeasureFunc;
@@ -185,15 +187,7 @@ impl Forest {
         fn set_offset(nodes: &mut Vec<NodeData>, node_id: NodeId, offset: f32) {
             let node = &mut nodes[node_id];
             
-            let foo = node.offset + offset;
-            println!("here is cache {:?}", node.cache_farest_element);
-            if foo <= 0.0 {
-                node.offset = 0.0;
-            } else if foo >= node.cache_farest_element {
-                node.offset = node.cache_farest_element;
-            } else {
-                node.offset += offset;
-            }
+            node.offset = clamp(offset, 0.0, node.cache_farest_element);
             
         }
         set_offset(&mut self.nodes, node, offset);
