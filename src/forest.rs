@@ -186,7 +186,7 @@ impl Forest {
             let node = &mut nodes[node_id];
             
             let foo = node.offset + offset;
-            
+            println!("here is cache {:?}", node.cache_farest_element);
             if foo <= 0.0 {
                 node.offset = 0.0;
             } else if foo >= node.cache_farest_element {
