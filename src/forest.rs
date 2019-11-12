@@ -210,7 +210,7 @@ impl Forest {
             node.cache_el_count = el_count;
             node.cache_farest_element = far_el;
         }
-        set_pos(&mut self.nodes, node, el_count, far_el);
+        set_cache(&mut self.nodes, node, el_count, far_el);
     }
 
     pub fn mark_dirty(&mut self, node: NodeId) {
