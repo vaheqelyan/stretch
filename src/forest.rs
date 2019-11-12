@@ -196,9 +196,6 @@ impl Forest {
             node.offset += offset;
             
             node.offset = clamp(node.offset, 0.0, real_max_size);
-            
-            println!("{:?}", node.bottom - node.y);
-            
         }
         set_offset(&mut self.nodes, node, offset);
     }
