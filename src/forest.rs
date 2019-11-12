@@ -203,6 +203,15 @@ impl Forest {
         }
         set_pos(&mut self.nodes, node, x, y, bottom, right);
     }
+    
+    pub fn set_cache(&mut self, node: NodeId, el_count: u32, far_el: f32) {
+        fn set_cache(nodes: &mut Vec<NodeData>, node_id: NodeId, el_count: u32, far_el: f32) {
+            let node = &mut nodes[node_id];
+            node.cache_el_count = el_count;
+            node.cache_farest_element = far_el;
+        }
+        set_pos(&mut self.nodes, node, el_count, far_el);
+    }
 
     pub fn mark_dirty(&mut self, node: NodeId) {
         fn mark_dirty_impl(nodes: &mut Vec<NodeData>, parents: &Vec<Vec<NodeId>>, node_id: NodeId) {
