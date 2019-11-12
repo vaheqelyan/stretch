@@ -186,12 +186,12 @@ impl Forest {
             let node = &mut nodes[node_id];
             node.offset += {
                 if offset <= 0.0 {
-                    0.0
+                    return 0.0
                 };
                 if offset > node.cache_farest_element {
-                    node.cache_farest_element
+                    return node.cache_farest_element
                 };
-                offset
+                return offset
             };
             
         }
