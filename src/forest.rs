@@ -22,6 +22,8 @@ pub(crate) struct NodeData {
     pub(crate) bottom: f32,
     pub(crate) right: f32,
     pub(crate) offset: f32,
+    pub(crate) cache_el_count: u32,
+    pub(crate) cache_farest_element: f32,
 }
 
 impl NodeData {
@@ -30,7 +32,7 @@ impl NodeData {
     }
     
     fn new_scroll_view(style: Style) -> Self {
-        NodeData { offset: 0.0,bottom:0.0, right:0.0, x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
+        NodeData { cache_el_count: 0, cache_farest_element: 0.0, offset: 0.0,bottom:0.0, right:0.0, x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
     }
 
     fn new(style: Style) -> Self {
