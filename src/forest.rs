@@ -189,7 +189,7 @@ impl Forest {
         fn set_offset(nodes: &mut Vec<NodeData>, node_id: NodeId, offset: f32) {
             let node = &mut nodes[node_id];
             
-            node.offset = clamp(offset, 0.0, node.cache_farest_element);
+            node.offset = clamp(node.offset + offset, 0.0, node.cache_farest_element);
             
         }
         set_offset(&mut self.nodes, node, offset);
