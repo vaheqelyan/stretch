@@ -189,13 +189,13 @@ impl Forest {
         fn set_offset(nodes: &mut Vec<NodeData>, node_id: NodeId, offset: f32) {
             let node = &mut nodes[node_id];
             
-            //let bound_height = node.bottom - node.y;
+            let bound_height = node.bottom - node.y;
             
-            //let real_max_size = node.cache_farest_element - bound_height;
+            let real_max_size = node.cache_farest_element - bound_height;
             
             node.offset += offset;
             
-            //node.offset = clamp(node.offset, 0.0, real_max_size);
+            node.offset = clamp(node.offset, 0.0, real_max_size);
         }
         set_offset(&mut self.nodes, node, offset);
     }
