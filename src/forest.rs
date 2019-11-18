@@ -2,7 +2,7 @@
 //!
 //! Backing datastructure for `Stretch` structs.
 
-extern crate num; // 0.2.0
+extern crate num; // 0.2.0set
 
 use num::clamp;
 
@@ -197,7 +197,6 @@ impl Forest {
                 node.offset = 0.0;    
             } else {
                 node.offset += offset;
-                println!("node.offset = {:?} max {:?}", node.offset,real_max_size);
             
                 node.offset = clamp(node.offset, 0.0, real_max_size);
             }
