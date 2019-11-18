@@ -194,7 +194,7 @@ impl Forest {
             let real_max_size = node.cache_farest_element - bound_height;
             
             if real_max_size < 0.0 {
-                node.offset = 0;    
+                node.offset = 0.0;    
             } else {
                 node.offset += offset;
                 println!("node.offset = {:?} max {:?}", node.offset,real_max_size);
