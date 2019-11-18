@@ -191,7 +191,10 @@ impl Forest {
             
             let bound_height = node.bottom - node.y;
             
-            let real_max_size = node.cache_farest_element - bound_height;
+            let real_max_size = {
+                let result = node.cache_farest_element - bound_height;
+                if result < 0.0 { 0.0 } else {result}
+            };
             
             node.offset += offset;
             
