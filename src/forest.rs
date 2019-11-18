@@ -195,6 +195,8 @@ impl Forest {
             
             node.offset += offset;
             
+            println!("node.offset = {:?} max {:?}", node.offset,real_max_size);
+            
             node.offset = clamp(node.offset, 0.0, real_max_size);
         }
         set_offset(&mut self.nodes, node, offset);
