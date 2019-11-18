@@ -191,16 +191,16 @@ impl Forest {
             
             let bound_height = node.bottom - node.y;
             
-            let real_max_size = {
-                let result = node.cache_farest_element - bound_height;
-                if result < 0.0 { 0.0 } else {result}
-            };
+            let real_max_size = node.cache_farest_element - bound_height;
             
-            node.offset += offset;
+            if real_max_size < 0.0 {
+                node.offset = 0;    
+            } else {
+                node.offset += offset;
+                println!("node.offset = {:?} max {:?}", node.offset,real_max_size);
             
-            println!("node.offset = {:?} max {:?}", node.offset,real_max_size);
-            
-            node.offset = clamp(node.offset, 0.0, real_max_size);
+                node.offset = clamp(node.offset, 0.0, real_max_size);
+            }
         }
         set_offset(&mut self.nodes, node, offset);
     }
