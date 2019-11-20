@@ -248,10 +248,10 @@ impl Stretch {
     }
     
     
-    pub fn get_pos(&self, node: Node) -> Result<(f32, f32, f32, f32), Error> {
+    pub fn get_pos(&self, node: Node) -> Result<(f32, f32, f32, f32, f32), Error> {
         let id = self.find_node(node)?;
         let node = &self.forest.nodes[id];
-        Ok( (node.x, node.y, node.bottom, node.right ) )
+        Ok( (node.x, node.y, node.bottom, node.right, node.offset_in ) )
     }
     
     pub fn get_cache(&self, node: Node) -> Result<(u32, f32), Error> {
@@ -267,10 +267,10 @@ impl Stretch {
     }
     
     
-    pub fn get_pos_from_id(&self, id: NodeId) -> Result<(f32, f32, f32, f32), Error> {
+    pub fn get_pos_from_id(&self, id: NodeId) -> Result<(f32, f32, f32, f32, f32), Error> {
         //let id = self.find_node(node)?;
         let node = &self.forest.nodes[id];
-        Ok( (node.x, node.y, node.bottom, node.right ) )
+        Ok( (node.x, node.y, node.bottom, node.right, node.offset_in ) )
     }
     
     pub fn is_scroll_view(&self, node: Node) -> Result<bool, Error> {
