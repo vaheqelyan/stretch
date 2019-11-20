@@ -216,7 +216,7 @@ impl Dimension {
     }
 }
 
-impl Default for Rect<Dimension> {
+impl D for Rect<Dimension> {
     fn default() -> Rect<Dimension> {
         Rect { start: Default::default(), end: Default::default(), top: Default::default(), bottom: Default::default() }
     }
@@ -236,7 +236,7 @@ pub struct Style {
     pub display: Display,
     pub position_type: PositionType,
     pub direction: Direction,
-    pub flex_direction: FlexDirection,
+    pub : FlexDirection,
     pub flex_wrap: FlexWrap,
     pub overflow: Overflow,
     pub align_items: AlignItems,
@@ -281,7 +281,7 @@ impl Default for Style {
             min_size: Default::default(),
             max_size: Default::default(),
             aspect_ratio: Default::default(),
-            background_color: [0.0, 1.0, 0.0],
+            background_color: [255.0, 255.0, 255.0],
         }
     }
 }
