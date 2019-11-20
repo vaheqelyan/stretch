@@ -26,21 +26,22 @@ pub(crate) struct NodeData {
     pub(crate) bottom: f32,
     pub(crate) right: f32,
     pub(crate) offset: f32,
+    pub(crate) offset_in: f32,
     pub(crate) cache_el_count: u32,
     pub(crate) cache_farest_element: f32,
 }
 
 impl NodeData {
     fn new_leaf(style: Style, measure: MeasureFunc) -> Self {
-        NodeData { cache_el_count: 0, cache_farest_element: 0.0, offset: 0.0, bottom:0.0, right:0.0, x: 0.0, y:0.0, scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { offset_in: 0.0, cache_el_count: 0, cache_farest_element: 0.0, offset: 0.0, bottom:0.0, right:0.0, x: 0.0, y:0.0, scroll_view: false,style, measure: Some(measure), layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
     
     fn new_scroll_view(style: Style) -> Self {
-        NodeData { cache_el_count: 0, cache_farest_element: 0.0, offset: 0.0,bottom:0.0, right:0.0, x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
+        NodeData { offset_in: 0.0, cache_el_count: 0, cache_farest_element: 0.0, offset: 0.0,bottom:0.0, right:0.0, x: 0.0, y:0.0, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, scroll_view: true }
     }
 
     fn new(style: Style) -> Self {
-        NodeData { cache_el_count: 0, cache_farest_element: 0.0, offset: 0.0,bottom:0.0, right:0.0, x:0.0, y:0.0, scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
+        NodeData { offset_in: 0.0, cache_el_count: 0, cache_farest_element: 0.0, offset: 0.0,bottom:0.0, right:0.0, x:0.0, y:0.0, scroll_view: false, style, measure: None, layout_cache: None, layout: Layout::new(), is_dirty: true, }
     }
 }
 
@@ -205,15 +206,16 @@ impl Forest {
     }
     
     
-    pub fn set_pos(&mut self, node: NodeId, x: f32, y: f32, bottom: f32, right: f32) {
-        fn set_pos(nodes: &mut Vec<NodeData>, node_id: NodeId, x: f32, y: f32, bottom: f32, right: f32) {
+    pub fn set_pos(&mut self, node: NodeId, x: f32, y: f32, bottom: f32, right: f32, offset_in: f32) {
+        fn set_pos(nodes: &mut Vec<NodeData>, node_id: NodeId, x: f32, y: f32, bottom: f32, right: f32, offset_in: f32) {
             let node = &mut nodes[node_id];
             node.x = x;
             node.y = y;
             node.bottom = bottom;
             node.right = right;
+            node.offset_in = offset_in;
         }
-        set_pos(&mut self.nodes, node, x, y, bottom, right);
+        set_pos(&mut self.nodes, node, x, y, bottom, right, offset_in);
     }
     
     pub fn set_cache(&mut self, node: NodeId, el_count: u32, far_el: f32) {
