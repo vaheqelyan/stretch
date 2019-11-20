@@ -236,7 +236,7 @@ pub struct Style {
     pub display: Display,
     pub position_type: PositionType,
     pub direction: Direction,
-    pub : FlexDirection,
+    pub flex_direction: FlexDirection,
     pub flex_wrap: FlexWrap,
     pub overflow: Overflow,
     pub align_items: AlignItems,
