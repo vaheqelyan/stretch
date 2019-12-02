@@ -14,6 +14,7 @@ use crate::result::{Cache, Layout};
 use crate::style::{Style, Dimension};
 use crate::Error;
 
+#[derive(Clone)]
 pub(crate) struct NodeData {
     pub(crate) style: Style,
     pub(crate) measure: Option<MeasureFunc>,
@@ -45,6 +46,7 @@ impl NodeData {
     }
 }
 
+#[derive(Clone)]
 pub(crate) struct Forest {
     pub(crate) nodes: Vec<NodeData>,
     pub(crate) children: Vec<Vec<NodeId>>,
