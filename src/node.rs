@@ -18,7 +18,7 @@ use crate::Error;
 
 impl Clone for Box<Fn(Size<Number>) -> Result<Size<f32>, Box<Any>> >
 {
-    fn clone(&self) -> Box<Foo> {
+    fn clone(&self) -> Box<Fn(Size<Number>) -> Result<Size<f32>, Box<Any>>> {
         self.box_clone()
     }
 }
