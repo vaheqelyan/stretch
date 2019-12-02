@@ -16,6 +16,7 @@ pub(crate) struct Allocator {
     free_ids: Vec<Id>,
 }
 
+#[derive(Clone)]
 impl Allocator {
     pub fn new() -> Self {
         Allocator { new_id: 0, free_ids: Vec::new() }
