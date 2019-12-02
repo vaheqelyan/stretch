@@ -15,6 +15,14 @@ use crate::result::Layout;
 use crate::style::*;
 use crate::Error;
 
+
+impl Clone for Box<Fn(Size<Number>) -> Result<Size<f32>, Box<Any>> >
+{
+    fn clone(&self) -> Box<Foo> {
+        self.box_clone()
+    }
+}
+
 pub type MeasureFunc = Box<Fn(Size<Number>) -> Result<Size<f32>, Box<Any>>>;
 
 lazy_static! {
