@@ -11,12 +11,12 @@ pub(crate) struct Id {
     generation: u32,
 }
 
+#[derive(Clone)]
 pub(crate) struct Allocator {
     new_id: u32,
     free_ids: Vec<Id>,
 }
 
-#[derive(Clone)]
 impl Allocator {
     pub fn new() -> Self {
         Allocator { new_id: 0, free_ids: Vec::new() }
