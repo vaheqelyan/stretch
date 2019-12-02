@@ -16,7 +16,9 @@ use crate::style::*;
 use crate::Error;
 
 
-impl Clone for Box<Fn(Size<f32>)>
+impl<T> Clone for T
+where
+    T: Box<Fn(Size<f32>)>
 {
     fn clone(&self) -> Box<Fn(Size<f32>)> {
         self.box_clone()
