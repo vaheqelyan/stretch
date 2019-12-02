@@ -28,6 +28,7 @@ pub struct Node {
     local: id::Id
 }
 
+#[derive(Clone)]
 pub struct Stretch {
     id: id::Id,
     nodes: id::Allocator,
