@@ -3,7 +3,7 @@
 //!
 
 /// Internal node id.
-pub(crate) type NodeId = usize;
+pub type NodeId = usize;
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub struct Id {
