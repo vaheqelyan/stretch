@@ -25,7 +25,7 @@ lazy_static! {
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub struct Node {
     instance: id::Id,
-    local: id::Id
+    pub local: id::Id
 }
 
 #[derive(Clone)]
