@@ -7,7 +7,7 @@ use std::collections::HashMap;
 use std::ops::Drop;
 use std::sync::Mutex;
 
-use crate::forest::Forest;
+use crate::forest::{Forest, NodeData};
 use crate::geometry::Size;
 use crate::id::{self, NodeId};
 use crate::number::Number;
