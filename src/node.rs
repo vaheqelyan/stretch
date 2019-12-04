@@ -273,8 +273,8 @@ impl Stretch {
         let node = &self.forest.nodes[id];
         Ok( (node.x, node.y, node.bottom, node.right, node.offset_in ) )
     }
-    pub fn get_node_from_id(&self, id: NodeId) -> Result<NodeData, Error> {
-        let node = self.forest.nodes[id];
+    pub fn get_node_from_id(&self, id: NodeId) -> Result<&NodeData, Error> {
+        let node = &self.forest.nodes[id];
         Ok( node )
     }
     
