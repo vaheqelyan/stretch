@@ -18,7 +18,7 @@ use crate::Error;
 pub type MeasureFunc = Box<fn(Size<Number>) -> Result<Size<f32>, Box<Any>>>;
 
 lazy_static! {
-    /// Global stretch instance id allocator.
+    /// Global stretch instance id allocator.get
     static ref INSTANCE_ALLOCATOR: Mutex<id::Allocator> = Mutex::new(id::Allocator::new());
 }
 
@@ -273,7 +273,7 @@ impl Stretch {
         let node = &self.forest.nodes[id];
         Ok( (node.x, node.y, node.bottom, node.right, node.offset_in ) )
     }
-    pub fn get_node_from_id(&self, id: NodeId) -> Result<&NodeData, Error> {
+    pub fn get_node_from_id(&self, id: NodeId) -> Result<Node, Error> {
         let node = &self.forest.nodes[id];
         Ok( node )
     }
