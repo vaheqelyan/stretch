@@ -274,8 +274,9 @@ impl Stretch {
         Ok( (node.x, node.y, node.bottom, node.right, node.offset_in ) )
     }
     pub fn get_node_from_id(&self, id: NodeId) -> Result<Node, Error> {
-        let node = &self.forest.nodes[id];
-        Ok( node )
+//         let node = &self.forest.nodes[id];
+//         Ok( node )
+        Ok(self.ids_to_nodes[&id])
     }
     
     pub fn is_scroll_view(&self, node: Node) -> Result<bool, Error> {
