@@ -7,7 +7,7 @@ pub type NodeId = usize;
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub struct Id {
-    id: u32,
+    pub id: u32,
     generation: u32,
 }
 
