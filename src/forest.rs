@@ -107,8 +107,8 @@ impl Forest {
         self.parents.clear();
     }
     
-    pub fn get_nodes(&mut self) -> Vec<NodeData> {
-     self.nodes   
+    pub fn get_nodes(&self) -> &Vec<NodeData> {
+     &self.nodes
     }
 
     /// Removes a node and swaps with the last node.
