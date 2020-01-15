@@ -300,7 +300,7 @@ impl Stretch {
     }
     pub fn print_nodes(&mut self) {
         for x in self.forest.nodes.iter() {
-            
+            println!("{:?}", self.ids_to_nodes[x]);
         }
 //         self.forest.print_nodes();
     }
