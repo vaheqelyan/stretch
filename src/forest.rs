@@ -109,7 +109,7 @@ impl Forest {
     
     pub fn get_nodes(&mut self) {
      for x in self.nodes.iter() {
-         println!("{:?}", x);
+//          println!("{:?}", x);
         }
     }
 
