@@ -139,6 +139,8 @@ impl Stretch {
         let child_id = self.find_node(child)?;
 
         self.forest.add_child(node_id, child_id);
+        self.add_node(node, node.local.id);
+        self.add_node(child, child.local.id);
         Ok(())
     }
 
