@@ -134,13 +134,13 @@ impl Stretch {
         Ok(())
     }
 
-    pub fn add_child(&mut self, node: Node, child: Node) -> Result<(), Error> {
+    pub fn add_child(&mut self, node: (Node, NodeId), child: (Node, NodeId)) -> Result<(), Error> {
         let node_id = self.find_node(node)?;
         let child_id = self.find_node(child)?;
 
         self.forest.add_child(node_id, child_id);
-        self.add_node(node, node.local.id as usize);
-        self.add_node(child, child.local.id as usize);
+        self.add_node(node.0, node.1);
+        self.add_node(child.0, child.1);
         Ok(())
     }
 
