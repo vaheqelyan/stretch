@@ -298,6 +298,9 @@ impl Stretch {
         let id = self.find_node(node)?;
         self.forest.compute_layout(id, size)
     }
+    pub fn get_nodes(&mut self) -> Vec<NodeData> {
+        self.forest.get_nodes()
+    }
 }
 
 impl Drop for Stretch {
