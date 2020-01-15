@@ -299,7 +299,10 @@ impl Stretch {
         self.forest.compute_layout(id, size)
     }
     pub fn print_nodes(&mut self) {
-        self.forest.print_nodes();
+        for x in self.forest.nodes.iter() {
+            
+        }
+//         self.forest.print_nodes();
     }
 }
 
