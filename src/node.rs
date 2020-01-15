@@ -94,12 +94,12 @@ impl Stretch {
         Ok(node)
     }*/
 
-    pub fn new_node(&mut self, style: Style, children: Vec<Node>) -> Result<(Node, NodeId), Error> {
+    pub fn new_node(&mut self, style: Style, children: Vec<Node>) -> Result<NodeId, Error> {
         let node = self.allocate_node();
         let children = children.iter().map(|child| self.find_node(*child)).collect::<Result<Vec<_>, Error>>()?;
         let id = self.forest.new_node(style, children);
 //         self.add_node(node, id);
-        Ok((node, id))
+        Ok(node)
     }
 
     /// Removes all nodes.
@@ -134,13 +134,13 @@ impl Stretch {
         Ok(())
     }
 
-    pub fn add_child(&mut self, node: (Node, NodeId), child: (Node, NodeId)) -> Result<(), Error> {
-        let node_id = self.find_node(node.0)?;
-        let child_id = self.find_node(child.0)?;
-
+    pub fn add_child(&mut self, node: Node, child: Node) -> Result<(), Error> {
+        let node_id = self.find_node(node)?;
+        let child_id = self.find_node(child)?;
+        
         self.forest.add_child(node_id, child_id);
-        self.add_node(node.0, node.1);
-        self.add_node(child.0, child.1);
+        self.add_node(node, node_id);
+        self.add_node(child, child_id);
         Ok(())
     }
 
