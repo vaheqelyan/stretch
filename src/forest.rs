@@ -48,7 +48,7 @@ impl NodeData {
 
 #[derive(Clone)]
 pub(crate) struct Forest {
-    pub(crate) nodes: Vec<NodeData>,
+    pub nodes: Vec<NodeData>,
     pub(crate) children: Vec<Vec<NodeId>>,
     pub(crate) parents: Vec<Vec<NodeId>>,
 }
