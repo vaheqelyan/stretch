@@ -135,8 +135,8 @@ impl Stretch {
     }
 
     pub fn add_child(&mut self, node: (Node, NodeId), child: (Node, NodeId)) -> Result<(), Error> {
-        let node_id = self.find_node(node)?;
-        let child_id = self.find_node(child)?;
+        let node_id = self.find_node(node.0)?;
+        let child_id = self.find_node(child.0)?;
 
         self.forest.add_child(node_id, child_id);
         self.add_node(node.0, node.1);
