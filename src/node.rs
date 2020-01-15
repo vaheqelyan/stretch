@@ -300,8 +300,8 @@ impl Stretch {
     }
     pub fn print_nodes(&mut self) {
         for (view, id) in self.nodes_to_ids.iter() {
-//             let parent = self.forest.parents[*view.0];
-            println!("{:?} {:?}", view, id);
+            let parent = self.forest.parents[id];
+            println!("{:?} {:?}", view, parent);
         }
 //         self.forest.print_nodes();
     }
