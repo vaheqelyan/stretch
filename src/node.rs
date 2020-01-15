@@ -298,8 +298,8 @@ impl Stretch {
         let id = self.find_node(node)?;
         self.forest.compute_layout(id, size)
     }
-    pub fn get_nodes(&self) -> &Vec<NodeData> {
-        self.forest.get_nodes()
+    pub fn print_nodes(&mut self) {
+        self.forest.print_nodes();
     }
 }
 
