@@ -299,8 +299,9 @@ impl Stretch {
         self.forest.compute_layout(id, size)
     }
     pub fn print_nodes(&mut self) {
-        for x in self.nodes_to_ids.iter() {
-            println!("{:?}", x);
+        for view in self.nodes_to_ids.iter() {
+            let parent = self.forest.parents[view];
+            println!("{:?} {:?}", x, parent);
         }
 //         self.forest.print_nodes();
     }
