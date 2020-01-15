@@ -60,8 +60,8 @@ impl Stretch {
     }
 
     fn add_node(&mut self, node: Node, id: NodeId) {
-        self.nodes_to_ids.insert(node, id);
-        self.ids_to_nodes.insert(id, node);
+//         self.nodes_to_ids.insert(node, id);
+//         self.ids_to_nodes.insert(id, node);
     }
 
     // Find node in the forest.
