@@ -60,8 +60,8 @@ impl Stretch {
     }
 
     fn add_node(&mut self, node: Node, id: NodeId) {
-//         self.nodes_to_ids.insert(node, id);
-//         self.ids_to_nodes.insert(id, node);
+        self.nodes_to_ids.insert(node, id);
+        self.ids_to_nodes.insert(id, node);
     }
 
     // Find node in the forest.
@@ -98,7 +98,7 @@ impl Stretch {
         let node = self.allocate_node();
         let children = children.iter().map(|child| self.find_node(*child)).collect::<Result<Vec<_>, Error>>()?;
         let id = self.forest.new_node(style, children);
-        self.add_node(node, id);
+//         self.add_node(node, id);
         Ok(node)
     }
 
