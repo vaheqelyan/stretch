@@ -55,7 +55,7 @@ impl Stretch {
     }
     
     fn has_id(&mut self, id: NodeId) -> Option<&Node> {
-        self.ids_to_nodes.get(id)
+        self.ids_to_nodes.get(&id)
     }
 
     fn allocate_node(&mut self) -> Node {
