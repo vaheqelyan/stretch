@@ -53,6 +53,10 @@ impl Stretch {
             forest: Forest::with_capacity(capacity),
         }
     }
+    
+    fn has_id(&mut self, id: NodeId) {
+        self.ids_to_nodes.get(id)
+    }
 
     fn allocate_node(&mut self) -> Node {
         let local = self.nodes.allocate();
